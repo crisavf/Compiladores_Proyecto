@@ -10,7 +10,8 @@
 %line
 %column
 %type Symbol
-//%function nextToken
+%scanerror Exception
+//%function nextToken   
 
 %eofval{
 	return symbol(sym.EOF,new String("EOF"));
@@ -55,7 +56,7 @@ DecIntegerLiteral = 0 | 0.[0-9][0-9]* | [1-9][0-9]* | [1-9][0-9]*.[0-9][0-9]*
 <YYINITIAL> "INT"    	    	{   datos+="- Lexema:'"+yytext()+"' - Token:'INT':- Valor:'"+sym.TINT+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n";
                                     System.out.println("- Lexema:'"+yytext()+"' - Token:'INT':- Valor:'"+sym.TINT+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n");
                                     return symbol(sym.TINT,yytext()); }
-<YYINITIAL> "STRING"            {   datos+="- Lexema:'"+yytext()+"' - Token:'STRING':- Valor:'"+sym.TSTRING+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n";
+<YYINITIAL> "STRING[]"            {   datos+="- Lexema:'"+yytext()+"' - Token:'STRING':- Valor:'"+sym.TSTRING+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n";
                                     System.out.println("- Lexema:'"+yytext()+"' - Token:'STRING':- Valor:'"+sym.TSTRING+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n");
                                     return symbol(sym.TSTRING,yytext()); }
 <YYINITIAL> "BOOLEAN"           {   datos+="- Lexema:'"+yytext()+"' - Token:'BOOLEAN':- Valor:'"+sym.TBOOL+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n";

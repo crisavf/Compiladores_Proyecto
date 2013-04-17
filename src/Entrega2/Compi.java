@@ -485,32 +485,15 @@ public class Compi {
              VeriExten(2); //llame al abrir
          }else{
              Guardar(nombreFile);
-              //reconocedor_tokens temp= new reconocedor_tokens();
-              //System.out.println(temp.reconocedor_tokens(nombreFile));
              try{   
                 Scanner s=new Scanner(new java.io.FileReader(nombreFile));
 
                 parser p = new parser(s);
 
                  try {
+                     
                      p.parse();
                      
-                     /*Symbol res;
-                     do{
-                         res = s.nextToken();
-                         if(res.sym!=54){
-                             msjCompi+="\n - Token:'"+res.value+"'";
-                             msjCompi+=" - Tipo:"+res.token;
-                             msjCompi+=" - Valor:"+res.sym;
-                             msjCompi+=" - Fila:"+res.left;
-                             msjCompi+=" - Columna:"+res.right+"\n";
-                         }else{
-                             
-                             msjErrores+="\n - Error:"+res.token+"\n";
-                             cantErrores++;
-                         }
-                     }while(res.sym != sym.EOF);
-                     */
                  } catch (Exception ex) {
                      Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
                  }
@@ -518,6 +501,7 @@ public class Compi {
                 //if(cantErrores>0){
                  
                  if(s.errorScanner==true){
+                     Errores.setForeground(Color.red);
                      msjCompi+=s.datos2;
                      ///msjCompi+="\n\n ERROR DE COMPILACIÓN (SCANNER).";
                  }

@@ -18,6 +18,6 @@ public class Exp_SimpNegAST extends AExp_SimplAST{
     }
 
     public Object visit(Visitor v,Object arg) {
-       return v.visitExpnegAST(this, arg);
+       return v.visitExp_SimpNegAST(this, arg);
    }
 }

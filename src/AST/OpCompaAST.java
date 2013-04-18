@@ -8,11 +8,12 @@ package AST;
  *
  * @author Walter
  */
-public abstract class AVarImportDecl extends AAST{
-     //Epsilon!
-    public AVarImportDecl(){
+public class OpCompaAST extends AOpAST{
+    
+    public OpCompaAST(){
         super();
     }
-    public abstract Object visit(Visitor v,Object arg);
-    
+    public Object visit(Visitor v,Object arg) {
+       return v.visitOpCompaAST(this, arg);
+   }
 }

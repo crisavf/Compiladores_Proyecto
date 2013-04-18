@@ -18,6 +18,6 @@ public class ExpTypeReadAST extends AExpTypeAST{
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitExpReadAST(this, arg);
+       return v.visitExpTypeReadAST(this, arg);
    } 
 }

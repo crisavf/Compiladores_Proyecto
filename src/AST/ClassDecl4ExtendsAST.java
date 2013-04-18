@@ -8,15 +8,13 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
-public class Exp_SimplTokAST extends AExp_SimplAST{
-    //public Symbol v_toks;
-    public Exp_SimplTokAST(){//Symbol v){
+public class ClassDecl4ExtendsAST extends AClassDecl4AST{
+    public ClassDecl4ExtendsAST(){
         super();
-        //this.v_toks = v;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitExp_SimplTokAST(this, arg);
+       return v.visitClassDecl4ExtendsAST(this, arg);
    }
 }

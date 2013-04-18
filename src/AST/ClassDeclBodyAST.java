@@ -19,6 +19,6 @@ public class ClassDeclBodyAST extends AClassDeclAST {
     }
     
       public Object visit(Visitor v,Object arg) {
-       return v.visitBodyCD1AST(this, arg);
+       return v.visitClassDeclBodyAST(this, arg);
    }    
 }

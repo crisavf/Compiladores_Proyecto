@@ -18,6 +18,6 @@ public class StatExitAST extends AStatementAST {
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitexitStatAST(this, arg);
+       return v.visitStatExitAST(this, arg);
    }
 }

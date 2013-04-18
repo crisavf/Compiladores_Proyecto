@@ -21,6 +21,6 @@ public class FormalListAST extends AFormalListAST {
         this.id2 = i2;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarFormalListAST(this, arg);
+       return v.visitFormalListAST(this, arg);
    }
 }

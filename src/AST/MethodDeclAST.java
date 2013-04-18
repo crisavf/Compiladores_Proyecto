@@ -30,6 +30,6 @@ public class MethodDeclAST extends AMethodDeclAST{
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitDefMethodDeclAST(this, arg);
+       return v.visitMethodDeclAST(this, arg);
    } 
 }

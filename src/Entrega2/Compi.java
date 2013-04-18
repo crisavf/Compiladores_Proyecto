@@ -27,12 +27,12 @@ public class Compi {
     /**
      * @param args the command line arguments
      */
-    
-    
-    
 }
  class Editor extends JFrame implements ActionListener
 {
+ 
+     String error=null;
+     
  //Menu
  JMenuBar MBarra=new JMenuBar();
  JMenu MArchivo=new JMenu("Archivo");
@@ -282,7 +282,8 @@ public class Compi {
     
     if((ae.getSource()==BCompilar) || (ae.getSource()==MCompilar))
     {
-     Compilar();
+
+               Compilar();
     }
     
     if((ae.getSource()==BAST) || (ae.getSource()==MAST))
@@ -485,32 +486,27 @@ public class Compi {
              VeriExten(2); //llame al abrir
          }else{
              Guardar(nombreFile);
-             try{   
+             try{
                 Scanner s=new Scanner(new java.io.FileReader(nombreFile));
-
                 parser p = new parser(s);
-
                  try {
-                     
                      p.parse();
-                     
                  } catch (Exception ex) {
-                     Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
+                     error=ex.getMessage();
+
                  }
-                
-                //if(cantErrores>0){
                  
+                 msjCompi+=s.datos;
                  if(s.errorScanner==true){
                      Errores.setForeground(Color.red);
-                     msjCompi+=s.datos2;
-                     ///msjCompi+="\n\n ERROR DE COMPILACIÓN (SCANNER).";
+                     
+                     msjCompi+=error;
                  }
                  
-                 msjCompi+="\n"+s.datos;
                  if(p.errorState==true){
                     Errores.setForeground(Color.red);
                     msjCompi+=p.datos3;
-                    //msjCompi+="\n\n ERROR DE COMPILACIÓN (CUP).";
+                    msjCompi+="\n\n ERROR DE COMPILACIÓN (CUP).";
                 }
                  if((p.errorState==false) && (s.errorScanner==false)){
                     Errores.setForeground(Color.green);
@@ -518,12 +514,14 @@ public class Compi {
                 }
                 if(s.errorScanner==true)
                     msjCompi+="\n\n ERROR DE COMPILACIÓN (SCANNER).";
+                
                 if(p.errorState==true)
                     msjCompi+="\n ERROR DE COMPILACIÓN (CUP).";
+                
                 Errores.setText(msjCompi);
-                    
+             }
+              catch(IOException e){
               }
-              catch(IOException e){}
          }
      }
    }

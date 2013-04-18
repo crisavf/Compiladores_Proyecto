@@ -19,6 +19,6 @@ public class StatWhileAST extends AStatementAST{
         this.h2 = s;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitwhileStatAST(this, arg);
+       return v.visitStatWhileAST(this, arg);
    }
 }

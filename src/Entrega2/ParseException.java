@@ -1,4 +1,4 @@
-package compiladorminijava;
+package Entrega2;
 
 public class ParseException extends Exception 
 {

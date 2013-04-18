@@ -17,6 +17,6 @@ public class VarStatementAST extends AVarStatementAST{
         this.h2 = ss;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarStatementsAST(this, arg);
+       return v.visitVarStatementAST(this, arg);
    }
 }

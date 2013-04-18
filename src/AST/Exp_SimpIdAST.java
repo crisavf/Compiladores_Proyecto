@@ -8,15 +8,17 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
-public class TypeVoidAST extends ATypeVoidAST{
-    public Symbol v_toks;
-    public TypeVoidAST(Symbol i){
+public class Exp_SimpIdAST extends AExp_SimplAST{
+    public Symbol h1;
+    
+    public Exp_SimpIdAST( Symbol id){
         super();
-        this.v_toks = i;
+        this.h1 = id;
     }
+
     public Object visit(Visitor v,Object arg) {
-       return v.visitconIdoVoidAST(this, arg);
+       return v.visitExp_SimpIdAST(this, arg);
    }
 }

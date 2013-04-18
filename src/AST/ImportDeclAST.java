@@ -19,6 +19,6 @@ public class ImportDeclAST extends AImportDeclAST{
         this.h2 = imp1;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitimpTypeAST(this, arg);
+       return v.visitImportDeclAST(this, arg);
    }
 }

@@ -4,19 +4,16 @@
  */
 package AST;
 
-import java_cup.runtime.Symbol;
-
 /**
  *
- * @author Battou
+ * @author Walter
  */
-public class OpAST extends AOpAST{
-    public Symbol v_toks;
-    public OpAST(){
+public class OpAndAST extends AOpAST{
+    
+    public OpAndAST(){
         super();
     }
-    
     public Object visit(Visitor v,Object arg) {
-       return v.visitOpTAST(this, arg);
+       return v.visitOpAndAST(this, arg);
    }
 }

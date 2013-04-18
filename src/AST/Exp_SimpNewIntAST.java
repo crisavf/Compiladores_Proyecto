@@ -11,14 +11,14 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class Exp_SimpNewIntAST extends AExp_SimplAST {
-    public Symbol numero;
+
     public AExpAST h1;
-    public Exp_SimpNewIntAST( Symbol nm, AExpAST e){
+    public Exp_SimpNewIntAST( AExpAST e){
         super();
-        this.numero = nm;
         this.h1 = e;
     }
+
     public Object visit(Visitor v,Object arg) {
-       return v.visitExpnewIntAST(this, arg);
+       return v.visitExp_SimpNewIntAST(this, arg);
    }
 }

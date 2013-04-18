@@ -1,10 +1,8 @@
-package compiladorminijava;
+package Entrega2;
 
 public class ScannerException extends Exception
 {
-   public ScannerException(){
-   super();}
-   
    public ScannerException(String mensaje){
-   super(mensaje);}
+   super(mensaje);
+   }
 }

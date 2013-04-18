@@ -16,6 +16,6 @@ public class BodyDecl2VarDeclAST extends ABodyDecl2AST{
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitVariableDAST(this, arg);
+       return v.visitBodyDecl2VarDeclAST(this, arg);
    }
 }

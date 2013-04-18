@@ -17,6 +17,6 @@ public class BodyDeclAST extends ABodyDeclAST {
         this.h2 = bd;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarBodyDeclAST(this, arg);
+       return v.visitBodyDeclAST(this, arg);
    }
 }

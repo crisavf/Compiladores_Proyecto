@@ -18,6 +18,6 @@ public class ElseStatementAST extends AElseStatementAST{
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitelseStatAST(this, arg);
+       return v.visitElseStatementAST(this, arg);
    }
 }

@@ -19,6 +19,6 @@ public class TypeNameAST  extends ATypeNameAST{
         this.id = i;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarTypeNameAST(this, arg);
+       return v.visitTypeNameAST(this, arg);
    }
 }

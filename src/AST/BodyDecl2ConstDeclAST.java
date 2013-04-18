@@ -16,6 +16,6 @@ public class BodyDecl2ConstDeclAST extends ABodyDecl2AST{
     }
         
       public Object visit(Visitor v,Object arg) {
-       return v.visitConstructorDAST(this, arg);
+       return v.visitBodyDecl2ConstDeclAST(this, arg);
    } 
 }

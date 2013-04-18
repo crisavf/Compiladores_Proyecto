@@ -20,6 +20,6 @@ public class ClassDecl2AST extends AClassDecl2AST{
     }
         
     public Object visit(Visitor v,Object arg) {
-       return v.visitCD2AST(this, arg);
+       return v.visitClassDecl2AST(this, arg);
    } 
 }

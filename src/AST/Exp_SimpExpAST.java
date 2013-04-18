@@ -15,6 +15,6 @@ public class Exp_SimpExpAST extends AExp_SimplAST{
         this.h1 = e;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitExpredAST(this, arg);
+       return v.visitExp_SimpExpAST(this, arg);
    }
 }

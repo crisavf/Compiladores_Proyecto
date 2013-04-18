@@ -15,6 +15,6 @@ public class BodyDecl2MethoDeclAST extends ABodyDecl2AST {
         this.h1 = md;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitMethodDAST(this, arg);
+       return v.visitBodyDecl2MethoDeclAST(this, arg);
    }
 }

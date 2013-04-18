@@ -18,6 +18,6 @@ public class StatPrintlnAST extends AStatementAST {
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitprintlnStatAST(this, arg);
+       return v.visitStatPrintlnAST(this, arg);
    }
 }

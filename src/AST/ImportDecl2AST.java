@@ -18,6 +18,6 @@ public class ImportDecl2AST extends AImportDecl2AST {
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitconPuntoAsteriscoAST(this, arg);
+       return v.visitImportDecl2AST(this, arg);
    }
 }

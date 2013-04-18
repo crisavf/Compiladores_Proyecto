@@ -20,6 +20,6 @@ public class VarDeclAST extends  AVarDeclAST {
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitTididAST(this, arg);
+       return v.visitVarDeclAST(this, arg);
    }
 }

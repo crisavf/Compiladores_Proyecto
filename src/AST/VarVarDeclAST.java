@@ -17,6 +17,6 @@ public class VarVarDeclAST extends AVarVarDeclAST{
         this.h2 = vds;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarVarDeclsAST(this, arg);
+       return v.visitVarVarDeclAST(this, arg);
    }
 }

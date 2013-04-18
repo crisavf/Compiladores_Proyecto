@@ -1,8 +1,6 @@
 
-import java.awt.*;
-import java.awt.event.*;
 
-
+import asd.*;
 class Fac extends Frame
 {
   Button b1;

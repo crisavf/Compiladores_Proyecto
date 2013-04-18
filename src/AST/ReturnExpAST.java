@@ -17,6 +17,6 @@ public class ReturnExpAST extends AReturnExpAST{
         this.h1 = e;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitDefReturnAST(this, arg);
+       return v.visitReturnExpAST(this, arg);
    } 
 }

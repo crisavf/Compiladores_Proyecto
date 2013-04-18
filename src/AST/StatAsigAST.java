@@ -13,12 +13,12 @@ import java_cup.runtime.Symbol;
 public class StatAsigAST extends AStatementAST{
     public Symbol id;
     public AExpTypeAST h1;
-    public StatAsigAST(Symbol i, Symbol ig,Symbol p ,AExpTypeAST ed){
+    public StatAsigAST(Symbol i,AExpTypeAST ed){
         super();
         this.h1 = ed;
         this.id = i;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitasigStatAST(this, arg);
+       return v.visitStatAsigAST(this, arg);
    }
 }

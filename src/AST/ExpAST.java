@@ -19,6 +19,6 @@ public class ExpAST extends AExpAST{
     
         
     public Object visit(Visitor v,Object arg) {
-       return v.visitDefExpAST(this, arg);
+       return v.visitExpAST(this, arg);
    } 
 }

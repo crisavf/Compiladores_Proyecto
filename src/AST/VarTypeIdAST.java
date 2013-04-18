@@ -21,6 +21,6 @@ public class VarTypeIdAST extends AVarTypeIdAST {
         this.id2 = i2;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarFormalListsAST(this, arg);
+       return v.visitVarTypeIdAST(this, arg);
    }
 }

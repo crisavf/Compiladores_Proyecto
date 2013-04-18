@@ -17,6 +17,6 @@ public class VarDistiExpAST extends AVarDistiExpAST{
         this.h2 = e;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visittipExpAST(this, arg);
+       return v.visitVarDistiExpAST(this, arg);
    }
 }

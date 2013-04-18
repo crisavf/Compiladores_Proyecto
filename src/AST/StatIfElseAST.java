@@ -10,7 +10,7 @@ import java_cup.runtime.Symbol;
  *
  * @author Battou
  */
-public class StatIfElseAST extends AVarStatementAST{
+public class StatIfElseAST extends AStatementAST{
     public AExpAST h1;
     public AStatementAST h2;
     public AElseStatementAST h3;
@@ -22,6 +22,6 @@ public class StatIfElseAST extends AVarStatementAST{
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitifelseStatAST(this, arg);
+       return v.visitStatIfElseAST(this, arg);
    }
 }

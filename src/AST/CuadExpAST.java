@@ -15,6 +15,6 @@ public class CuadExpAST extends ACuadExpAST{
         this.h1 = e;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitunaExpAST(this, arg);
+       return v.visitCuadExpAST(this, arg);
    }
 }

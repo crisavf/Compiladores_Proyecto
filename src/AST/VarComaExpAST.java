@@ -21,6 +21,6 @@ public class VarComaExpAST extends AVarComaExpAST {
     }
 
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarExpListsAST(this, arg);
+       return v.visitVarComaExpAST(this, arg);
    }
 }

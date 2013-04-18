@@ -15,6 +15,6 @@ public class StatVarStatAST extends AStatementAST{
         this.h1 = s;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitvarStatAST(this, arg);
+       return v.visitStatVarStatAST(this, arg);
    }
 }

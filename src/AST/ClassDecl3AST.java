@@ -20,6 +20,6 @@ public class ClassDecl3AST extends AClassDecl3AST{
     }
         
       public Object visit(Visitor v,Object arg) {
-       return v.visitCD3AST(this, arg);
+       return v.visitClassDecl3AST(this, arg);
    } 
 }

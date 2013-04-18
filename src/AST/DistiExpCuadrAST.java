@@ -18,6 +18,6 @@ public class DistiExpCuadrAST extends ADistiExpAST{
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitTipoCuadrAST(this, arg);
+       return v.visitDistiExpCuadrAST(this, arg);
    }
 }

@@ -8,15 +8,13 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Walter
+ * @author Battou
  */
-public class ClassDecl4AST extends AClassDecl4AST{
-    public Symbol v_toks;
-    public ClassDecl4AST(Symbol e){
+public class TypeVoidVoidAST extends ATypeVoidAST{
+    public TypeVoidVoidAST(){
         super();
-        this.v_toks =e;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitconExtendsoImplementsAST(this, arg);
+       return v.visitTypeVoidVoidAST(this, arg);
    }
 }

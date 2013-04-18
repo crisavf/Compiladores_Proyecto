@@ -853,10 +853,9 @@ public class Scanner implements java_cup.runtime.Scanner {
           }
         case 72: break;
         case 1: 
-          { datos2+="\n[Error Scanner] Caracter no permitido '"+yytext()+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n";
-          /*System.out.println("Error caracter inv�lido: <" + yytext() + "> en fila: " + yyline + " columna: " + yycolumn );*/
+          { datos2="\n[Error Scanner] Caracter no permitido '"+yytext()+"' - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n";
                                    errorScanner=true;
-				   //throw new Error("\n[Error Scanner] Caracter no permitido '"+yytext()+" - Fila:'"+yyline+" - Columna:'"+yycolumn+"'\n");
+				   throw new ScannerException(datos2);
           }
         case 73: break;
         case 13: 

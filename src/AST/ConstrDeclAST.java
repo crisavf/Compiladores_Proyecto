@@ -26,6 +26,6 @@ public class ConstrDeclAST extends AConstrDeclAST{
     
         
       public Object visit(Visitor v,Object arg) {
-       return v.visitDefConstrAST(this, arg);
+       return v.visitConstrDeclAST(this, arg);
    } 
 }

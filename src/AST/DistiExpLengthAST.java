@@ -20,6 +20,6 @@ public class DistiExpLengthAST extends ADistiExpAST{
     }
     
     public Object visit(Visitor v,Object arg) {
-       return v.visitTipoLengthAST(this, arg);
+       return v.visitDistiExpLengthAST(this, arg);
    }
 }

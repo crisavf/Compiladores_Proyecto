@@ -21,6 +21,6 @@ public class StatCuadExpAST extends AStatementAST {
         this.id = i;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitExpStatAST(this, arg);
+       return v.visitStatCuadExpAST(this, arg);
    } 
 }

@@ -19,6 +19,6 @@ public class DistiExpListAST extends ADistiExpAST{
         this.id = i;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitTipoListaAST(this, arg);
+       return v.visitDistiExpListAST(this, arg);
    }
 }

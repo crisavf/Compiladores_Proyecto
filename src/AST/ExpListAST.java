@@ -18,6 +18,6 @@ public class ExpListAST extends AExpListAST {
    }
 
    public Object visit(Visitor v,Object arg) {
-       return v.visitExplAST(this, arg);
+       return v.visitExpListAST(this, arg);
    }
 }

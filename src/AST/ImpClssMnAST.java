@@ -9,10 +9,10 @@ package AST;
  * @author Battou
  */
 public class ImpClssMnAST extends AProgramAST  {
-    public AVarImportDecl h1;
+    public AVarImportDeclAST h1;
     public AVarClassDeclAST h2;
     public AMainClassAST h3;
-    public ImpClssMnAST(AVarImportDecl i, AVarClassDeclAST c, AMainClassAST m){
+    public ImpClssMnAST(AVarImportDeclAST i, AVarClassDeclAST c, AMainClassAST m){
        super();
        this.h1 = i;
        this.h2 = c;

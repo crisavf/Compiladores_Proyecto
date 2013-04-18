@@ -10,13 +10,13 @@ import java_cup.runtime.Symbol;
  *
  * @author Battou
  */
-public class ThisIdAST extends AThisIdAST{
-    public Symbol v_toks;
-    public ThisIdAST(Symbol s){
+public class TypeVoidIdAST extends ATypeVoidAST{
+    public Symbol id;
+    public TypeVoidIdAST(Symbol i){
         super();
-        this.v_toks = s;
+        this.id = i;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitconThisoIdAST(this, arg);
+       return v.visitTypeVoidIdAST(this, arg);
    }
 }

@@ -20,7 +20,8 @@ public class StatExpListAST extends AStatementAST{
         this.h2 = el;
         this.id = i;
     }
+
     public Object visit(Visitor v,Object arg) {
-       return v.visitExplistStatAST(this, arg);
+       return v.visitStatExpListAST(this, arg);
    }
 }

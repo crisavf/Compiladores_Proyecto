@@ -15,6 +15,6 @@ public class ExpTypeExpAST extends AExpTypeAST{
         this.h1 = e;
     }
     public Object visit(Visitor v,Object arg) {
-       return v.visitsolaExpAST(this, arg);
+       return v.visitExpTypeExpAST(this, arg);
    }
 }

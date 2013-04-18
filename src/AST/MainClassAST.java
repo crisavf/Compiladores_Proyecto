@@ -11,12 +11,13 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class MainClassAST extends AMainClassAST{
-    public Symbol id1;
-
-    public Symbol id2;
+    //public Symbol id1;
+    //public Symbol id2;
+    public String id1;
+    public String id2;
     public AStatementAST h1;
 
-    public MainClassAST(Symbol i1,Symbol i2,AStatementAST s){
+    public MainClassAST(String i1,String i2,AStatementAST s){
         super(); 
         this.h1 = s;
         this.id1 = i1;

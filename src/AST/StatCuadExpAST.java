@@ -11,10 +11,11 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class StatCuadExpAST extends AStatementAST {
-    public Symbol id;
+    //public Symbol id;
+    public String id;
     public ACuadExpAST h1;
     public AExpTypeAST h2; 
-    public StatCuadExpAST(Symbol i,ACuadExpAST ce,AExpTypeAST ed){
+    public StatCuadExpAST(String i,ACuadExpAST ce,AExpTypeAST ed){
         super();
         this.h1 = ce;
         this.h2 = ed;

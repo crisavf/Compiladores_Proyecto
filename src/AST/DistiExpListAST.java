@@ -11,9 +11,10 @@ import java_cup.runtime.Symbol;
  * @author Walter
  */
 public class DistiExpListAST extends ADistiExpAST{
-    public Symbol id;
+    //public Symbol id;
+    public String id;
     public AExpListAST h1; 
-    public DistiExpListAST(Symbol i,AExpListAST el){
+    public DistiExpListAST(String i,AExpListAST el){
         super();
         this.h1 = el;
         this.id = i;

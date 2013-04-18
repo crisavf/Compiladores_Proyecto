@@ -13,13 +13,14 @@ import java_cup.runtime.Symbol;
 public class MethodDeclAST extends AMethodDeclAST{
 
     public ATypeVoidAST h1;
-    public Symbol id;
+    //public Symbol id;
+    public String id;
     public AFormalListAST h2;
     public AVarVarDeclAST h3;
     public AVarStatementAST h4;
     public AReturnExpAST h5;
     
-    public MethodDeclAST(Symbol i,ATypeVoidAST iv,AFormalListAST fl,AVarVarDeclAST vd,AVarStatementAST s, AReturnExpAST r){
+    public MethodDeclAST(String i,ATypeVoidAST iv,AFormalListAST fl,AVarVarDeclAST vd,AVarStatementAST s, AReturnExpAST r){
         super();
         this.h1 = iv;
         this.h2 = fl;

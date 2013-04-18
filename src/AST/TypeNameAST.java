@@ -11,9 +11,10 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class TypeNameAST  extends ATypeNameAST{
-    public Symbol id;
+    //public Symbol id;
+    public String id;
     public ATypeName2AST h1;
-    public TypeNameAST(Symbol i,ATypeName2AST tn){
+    public TypeNameAST(String i,ATypeName2AST tn){
         super();
         this.h1 = tn;
         this.id = i;

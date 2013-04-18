@@ -12,9 +12,10 @@ import java_cup.runtime.Symbol;
  */
 public class StatExpListAST extends AStatementAST{
     public AThisIdAST h1; 
-    public Symbol id;
+    //public Symbol id;
+    public String id;
     public AExpListAST h2;
-    public StatExpListAST( Symbol i,AThisIdAST t,AExpListAST el){
+    public StatExpListAST( String i,AThisIdAST t,AExpListAST el){
         super();
         this.h1 = t;
         this.h2 = el;

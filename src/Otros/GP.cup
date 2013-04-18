@@ -1,9 +1,13 @@
 import java_cup.runtime.*;
 
+import AST.*;
+
 parser code {:
 
 	Scanner scanner;
         
+        
+        AAST raiz;
 
 	public parser(java.io.Reader input){
 	scanner = new Scanner(input);
@@ -265,16 +269,52 @@ public String errores(int sys)
 
 :}
 
-terminal Integer NUM;
+//terminal Integer NUM;
 terminal COMA,PUNTO, PUNTOyCOMA,PUNTOyASTERISCO,IMPORT,PUBLIC,STATIC,VOID,MAIN,EXTENDS,IMPLEMENTS, RETURN, SYSTEM,OUT,PRINTLN,CLASS,CICLO,CONDI,SINO,IN,READ,EXIT,LENGTH,TRUE,FALSE,THIS,NEW,SUMA,REST,DIV,MULT,ASIGN,OR,AND,NEG,COMPA,DIFE,MENOR,MENORIGUAL,MAYORIGUAL,MAYOR;
-terminal String STRING, ID;
+//terminal String STRING, ID;
 terminal TINT,TSTRING,TBOOL,PARENRedI,PARENRedD,PARENCuaD,PARENCuaI,PARENCurD,PARENCurI;
 
+//terminal Symbol STRING,ID,NUM;
+terminal String STRING,ID,NUM;
 
-non terminal program, varimportdecl, importdecl, importdecl2, varclassdecl, classdecl, classdecl2, classdecl3, classdecl4;
-non terminal typename, typename2, mainclass, bodydecl, bodydecl2, vardecl, constrdecl, varvardecl, varstatement;
-non terminal methodecl, typevoid, returnexp, formallist, vartypeid, /*type, */statement , elsestatement, cuadexpe, exptype;
-non terminal thisid, exp, vardistiexp, distiexp, exp_simpl,explist,varcomaexp,op;
+non terminal AProgramAST program;
+non terminal AVarImportDeclAST varimportdecl;
+non terminal AImportDeclAST importdecl;
+non terminal AImportDecl2AST importdecl2;
+non terminal AVarClassDeclAST varclassdecl;
+non terminal AClassDeclAST classdecl;
+non terminal AClassDecl2AST classdecl2;
+non terminal AClassDecl3AST classdecl3;
+non terminal AClassDecl4AST classdecl4;
+non terminal ATypeNameAST typename;
+non terminal ATypeName2AST typename2;
+non terminal AMainClassAST mainclass;
+non terminal ABodyDeclAST bodydecl;
+non terminal ABodyDecl2AST bodydecl2;
+non terminal AVarDeclAST vardecl;
+non terminal AConstrDeclAST constrdecl;
+non terminal AVarVarDeclAST varvardecl;
+non terminal AVarStatementAST varstatement;
+non terminal AMethodDeclAST methodecl;
+non terminal ATypeVoidAST typevoid;
+non terminal AReturnExpAST returnexp;
+non terminal AFormalListAST formallist;
+non terminal AVarTypeIdAST vartypeid;
+ /*type, */
+non terminal AStatementAST statement;
+non terminal AElseStatementAST elsestatement;
+non terminal ACuadExpAST cuadexpe;
+non terminal AExpTypeAST exptype;
+non terminal AThisIdAST thisid;
+non terminal AExpAST exp;
+non terminal AVarDistiExpAST vardistiexp;
+non terminal ADistiExpAST distiexp;
+non terminal AExp_SimplAST exp_simpl;
+non terminal AExpListAST explist;
+non terminal AVarComaExpAST varcomaexp;
+non terminal AOpAST op;
+
+
 
 precedence left ID;
 precedence left OR, AND;
@@ -289,115 +329,232 @@ precedence left SINO;
 start with program;
 
 // Regla 1)
-program ::=	varimportdecl varclassdecl mainclass
+program ::=	varimportdecl:i varclassdecl:c mainclass:m
+        {:
+            parser.raiz = new ImpClssMnAST(i,c,m);
+        :}
 	;
 
 //Regla 2)
-varimportdecl ::= importdecl varimportdecl
+varimportdecl ::= importdecl:d varimportdecl:s
+        {:
+            RESULT= new VarImportDeclAST(d,s);
+        :}
 	|
+	{:  
+            RESULT = null; 
+        :}
 	;
 
 // Regla 3)
-importdecl ::=	IMPORT typename importdecl2 PUNTOyCOMA
+importdecl ::=	IMPORT typename:tn importdecl2:imp1 PUNTOyCOMA
+	{:
+		RESULT= new ImportDeclAST(tn,imp1);
+	:}
 	;
 
 // Regla 4)
 importdecl2 ::= PUNTOyASTERISCO
+	{:
+		RESULT= new ImportDecl2AST();
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 5)
-varclassdecl ::=  varclassdecl classdecl
+varclassdecl ::=  varclassdecl:cds classdecl:cd
+	{:
+		RESULT= new VarClassDeclAST(cd,cds);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 6)
-classdecl ::= classdecl2 PARENCurI bodydecl PARENCurD
+classdecl ::= classdecl2:cd1 PARENCurI bodydecl:bd PARENCurD
+	{:
+		RESULT= new ClassDeclBodyAST(cd1,bd);
+	:}
 	;
 
 // Regla 7)
-classdecl2::= CLASS ID classdecl3
+classdecl2::= CLASS ID:id1 classdecl3:cd2
+	{:
+                
+		RESULT= new ClassDecl2AST(id1,cd2);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 8)
-classdecl3::= classdecl4 ID
+classdecl3::= classdecl4:cd3 ID:id1
+	{:
+		RESULT= new ClassDecl3AST(id1,cd3);
+	:}
 	;
 
 // Regla 9)                  --------FALTA-----
 classdecl4::= EXTENDS
+	{:
+		RESULT= new ClassDecl4ExtendsAST();
+	:}
 	| 
 	IMPLEMENTS
+	{:
+		RESULT= new ClassDecl4ImplementsAST();
+	:}
 	;
 
 
 // Regla 10)
-typename ::=	ID typename2
+typename ::=	ID:id1 typename2:tn
+	{:
+		RESULT= new TypeNameAST(id1,tn);
+	:}
 	;
 
 // Regla 11)
-typename2 ::= typename2 PUNTO ID
+typename2 ::= typename2:tns PUNTO ID:id1
+	{:
+		RESULT= new TypeName2AST(id1,tns);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 12)
-mainclass ::=	CLASS ID PARENCurI PUBLIC STATIC VOID MAIN PARENRedI TSTRING ID PARENRedD PARENCurI statement PARENCurD PARENCurD
+mainclass ::=	CLASS ID:id1 PARENCurI PUBLIC STATIC VOID MAIN PARENRedI TSTRING ID:id2 PARENRedD PARENCurI statement:s PARENCurD PARENCurD
+	{:
+		RESULT= new MainClassAST(id1,id2,s);  //t,i2,s);
+	:}
 	;
 
 
 // Regla 13)
-bodydecl ::=	bodydecl2 bodydecl
+bodydecl ::=	bodydecl2:bd1 bodydecl:bd
+	{:
+		RESULT= new BodyDeclAST(bd1,bd);
+	:}
 	|
 	;
 
 // Regla 14)
-bodydecl2 ::= vardecl
-	| constrdecl
-	| methodecl
-	| classdecl
+bodydecl2 ::= vardecl:vd
+	{:
+		RESULT= new BodyDecl2VarDeclAST(vd);
+	:}
+	| constrdecl:cd
+	{:
+		RESULT= new BodyDecl2ConstDeclAST(cd);
+	:}
+	| methodecl:md
+	{:
+		RESULT= new BodyDecl2MethoDeclAST(md);
+	:}
+	| classdecl:cd2
+	{:
+		RESULT= new BodyDecl2ClassDeclAST(cd2);
+	:}
 ;
 
 
 // Regla 15)
-vardecl ::= ID ID PUNTOyCOMA
+vardecl ::= ID:id1 ID:id2 PUNTOyCOMA
+	{:
+		RESULT= new VarDeclAST(id1,id2);
+	:}
 	;
 
 // Regla 16)
-constrdecl ::=	PUBLIC ID PARENRedI formallist PARENRedD PARENCurI varvardecl varstatement PARENCurD
+constrdecl ::=	PUBLIC ID:id1 PARENRedI formallist:fl PARENRedD PARENCurI varvardecl:vd varstatement:s PARENCurD
+	{:
+		RESULT= new ConstrDeclAST(id1,fl,vd,s);
+	:}
 	;
 
 // Regla 17)
-varvardecl ::=	varvardecl vardecl
+varvardecl ::=	varvardecl:vds vardecl:vd
+	{:
+		RESULT= new VarVarDeclAST(vd,vds);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 18)
-varstatement ::= varstatement statement
+varstatement ::= varstatement:ss statement:s
+	{:
+		RESULT= new VarStatementAST(s,ss);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 19)
-methodecl ::=	PUBLIC typevoid ID PARENRedI formallist PARENRedD  PARENCurI varvardecl varstatement returnexp PARENCurD
+methodecl ::=	PUBLIC typevoid:iv ID:id1 PARENRedI formallist:fl PARENRedD  PARENCurI varvardecl:vd varstatement:s returnexp:r PARENCurD
+	{:
+		RESULT= new MethodDeclAST(id1,iv,fl,vd,s,r);
+	:}
 	;
 
 
 // Regla 20)                  --------FALTA-----
-typevoid::= ID | VOID
+typevoid::= ID:id1 
+        {:
+		RESULT= new TypeVoidIdAST(id1);
+	:}
+        | VOID
+	{:
+		RESULT= new TypeVoidVoidAST();
+	:}
 	;
 
 // Regla 21)
-returnexp::= RETURN exp PUNTOyCOMA
+returnexp::= RETURN exp:e PUNTOyCOMA
+	{:
+		RESULT= new ReturnExpAST(e);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 22)
-formallist ::=	ID ID vartypeid
+formallist ::=	ID:id1 ID:id2 vartypeid:fls
+	{:
+		RESULT= new FormalListAST(id1,id2,fls);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 23)
-vartypeid ::=	vartypeid COMA ID ID
+vartypeid ::=	vartypeid:fls COMA ID:id1 ID:id2
+	{:
+
+		RESULT= new VarTypeIdAST(id1,id2,fls);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 /*// Regla 24)
@@ -409,85 +566,228 @@ type ::=  TINT PARENCuaI PARENCuaD
 */
 
 // Regla 24)
-statement ::=	ID ASIGN  exptype PUNTOyCOMA
-        |	thisid PUNTO ID PARENRedI explist PARENRedD PUNTOyCOMA
-        |	ID  cuadexpe ASIGN  exptype PUNTOyCOMA
-        |       SYSTEM PUNTO EXIT PARENRedI NUM PARENRedD PUNTOyCOMA
-        |       PARENCurI varstatement PARENCurD
-	|	CONDI PARENRedI exp PARENRedD statement elsestatement
-        |	CICLO PARENRedI exp PARENRedD statement
-        |	SYSTEM PUNTO OUT PUNTO PRINTLN PARENRedI exp PARENRedD PUNTOyCOMA
+statement ::=	ID:id1 ASIGN  exptype:ed PUNTOyCOMA
+	{:      
+		RESULT= new StatAsigAST(id1,ed);
+	:}
+        |	thisid:t PUNTO ID:id1 PARENRedI explist:el PARENRedD PUNTOyCOMA
+	{:
+		RESULT= new StatExpListAST(id1,t,el);
+	:}
+        |	ID:id1  cuadexpe:ce ASIGN  exptype:ed PUNTOyCOMA
+	{:
+		RESULT= new StatCuadExpAST(id1,ce,ed);
+	:}
+        |       SYSTEM PUNTO EXIT PARENRedI NUM:n PARENRedD PUNTOyCOMA
+	{:
+		RESULT= new StatExitAST(n);
+	:}
+        |       PARENCurI varstatement:s PARENCurD
+	{:
+		RESULT= new StatVarStatAST(s);
+	:}
+	|	CONDI PARENRedI exp:e PARENRedD statement:s elsestatement:es
+	{:
+		RESULT= new StatIfElseAST(e,s,es);
+	:}
+        |	CICLO PARENRedI exp:e PARENRedD statement:s
+	{:
+		RESULT= new StatWhileAST(e,s);
+	:}
+        |	SYSTEM PUNTO OUT PUNTO PRINTLN PARENRedI exp:e PARENRedD PUNTOyCOMA
+	{:
+		RESULT= new StatPrintlnAST(e);
+	:}
 	;
 
 // Regla 25)
-elsestatement::= SINO statement
+elsestatement::= SINO statement:s
+	{:
+		RESULT= new ElseStatementAST(s);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 26)
-cuadexpe::= PARENCuaI exp PARENCuaD
+cuadexpe::= PARENCuaI exp:e PARENCuaD
+	{:
+		RESULT= new CuadExpAST(e);
+	:}
 	;
 
 // Regla 27)
-exptype::= exp
-	| PARENRedI ID PARENRedD SYSTEM PUNTO IN PUNTO READ PARENRedI PARENRedD
+exptype::= exp:e	{:
+		RESULT= new ExpTypeExpAST(e);
+	:}
+	| PARENRedI ID:id1 PARENRedD SYSTEM PUNTO IN PUNTO READ PARENRedI PARENRedD
+	{:
+		RESULT= new ExpTypeReadAST(id1);
+	:}
 	;
 
 // Regla 28)                  --------FALTA-----
 thisid::= THIS
-	| ID
+	{:
+		RESULT= new ThisIdThisAST();        ////////////////////////Estosssssssssssssssssssssssssssssssss
+	:}
+	| ID:id1
+	{:
+		RESULT= new ThisIdIdAST(id1);   ////////////////////////Estosssssssssssssssssssssssssssssssss
+	:}
 	;
 
 // Regla 29)
-exp ::=	 exp_simpl vardistiexp
+exp ::=	 exp_simpl:es vardistiexp:ei
+	{:
+		RESULT= new ExpAST(es,ei);
+	:}
 	;
 
 // Regla 30)
-vardistiexp ::= vardistiexp distiexp 
+vardistiexp ::= vardistiexp:e distiexp :t
+	{:
+		RESULT= new VarDistiExpAST(t,e);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 31)
-distiexp ::= 	PUNTO ID PARENRedI explist PARENRedD
-        |	op exp
-	|	PARENCuaI exp PARENCuaD
+distiexp ::= 	PUNTO ID:id1 PARENRedI explist:el PARENRedD
+	{:
+		RESULT= new DistiExpListAST(id1,el);
+	:}
+        |	op:o exp:e
+	{:
+		RESULT= new DistiExpOpAST(o,e);
+	:}
+	|	PARENCuaI exp:e PARENCuaD
+	{:
+		RESULT= new DistiExpCuadrAST(e);
+	:}
 	|	PUNTO LENGTH
+	{:
+		RESULT= new DistiExpLengthAST();//(p,l);
+	:}
 	;
 
 // Regla 32)
-exp_simpl ::=	 ID
+exp_simpl ::=	 ID:id1
+	{:
+		RESULT= new Exp_SimpIdAST(id1);;
+	:}
 	| TRUE
+	{:
+		RESULT= new Exp_SimpTrueAST();
+	:}
 	| FALSE
-	| NUM
+	{:
+		RESULT= new Exp_SimpFalseAST();
+	:}
+	| NUM:n
+	{:
+		RESULT= new Exp_SimpNumAST(n);
+	:}
 	| THIS
-	| NEW TINT PARENCuaI exp PARENCuaD
-	| NEW ID PARENRedI explist PARENRedD
-	| NEG exp
-	| PARENRedI exp PARENRedD
-	| STRING
+	{:
+		RESULT= new Exp_SimpThisAST();
+	:}
+	| NEW TINT PARENCuaI exp:e PARENCuaD
+	{:
+		RESULT= new Exp_SimpNewIntAST(e);
+	:}
+	| NEW ID:id1 PARENRedI explist:e PARENRedD
+	{:
+		RESULT= new Exp_SimpNewIdAST(id1,e);
+	:}
+	| NEG exp:e
+	{:
+		RESULT= new Exp_SimpNegAST(e);
+	:}
+	| PARENRedI exp:e PARENRedD
+	{:
+		RESULT= new Exp_SimpExpAST(e);
+	:}
+	| STRING:s
+	{:
+		RESULT= new Exp_SimpStringAST(s);
+	:}
 	;
 
 // Regla 33)
-explist ::=	 exp varcomaexp
+explist ::=	 exp:e varcomaexp:l
+	{:
+		RESULT= new ExpListAST(e,l);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 34)
-varcomaexp ::=	 varcomaexp COMA exp
+varcomaexp ::=	 varcomaexp:l COMA exp:e
+	{:
+		RESULT= new VarComaExpAST(e,l);
+	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 35)                   --------FALTA-----
 op ::=	  SUMA
+	{:
+		RESULT= new OpSumAST();
+	:}
 	| REST
+	{:
+		RESULT= new OpRestAST();
+        :}
 	| MULT
+	{:
+		RESULT= new OpMulAST();
+	:}
 	| DIV
+	{:
+		RESULT= new OpDivAST();
+	:}
 	| DIFE
+	{:
+		RESULT= new OpDifeAST();
+	:}
 	| COMPA
+	{:
+		RESULT= new OpCompaAST();
+	:}
 	| MENOR
+	{:
+		RESULT= new OpMenorAST();
+	:}
 	| MENORIGUAL
+	{:
+		RESULT= new OpMenorIgualAST();
+	:}
 	| MAYORIGUAL
+	{:
+		RESULT= new OpMayorIgualAST();
+	:}
 	| MAYOR
+	{:
+		RESULT= new OpMayorAST();
+	:}
 	| OR
+	{:
+		RESULT= new OpOrAST();
+	:}
 	| AND
+	{:
+		RESULT= new OpAndAST();
+	:}
 	;

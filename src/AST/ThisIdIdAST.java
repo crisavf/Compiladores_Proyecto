@@ -11,8 +11,9 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class ThisIdIdAST extends AThisIdAST{
-    public Symbol id;
-    public ThisIdIdAST(Symbol s){
+    //public Symbol id;
+    public String id;
+    public ThisIdIdAST(String s){
         super();
         this.id = s;
     }

@@ -11,12 +11,13 @@ import java_cup.runtime.Symbol;
  * @author Walter
  */
 public class ConstrDeclAST extends AConstrDeclAST{
-    public Symbol id;
+    //public Symbol id;
+    public String id;
     public AFormalListAST h1;
     public AVarVarDeclAST h2;
     public AVarStatementAST h3;
 
-    public ConstrDeclAST(Symbol i,AFormalListAST fl,AVarVarDeclAST vd, AVarStatementAST s){
+    public ConstrDeclAST(String i,AFormalListAST fl,AVarVarDeclAST vd, AVarStatementAST s){
         super();
         this.h1 = fl;
         this.h2 = vd;

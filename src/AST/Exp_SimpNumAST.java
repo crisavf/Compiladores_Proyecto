@@ -11,9 +11,10 @@ import java_cup.runtime.Symbol;
  * @author Walter
  */
 public class Exp_SimpNumAST extends AExp_SimplAST{
-    public Symbol h1;
+    //public Symbol h1;
+    public String h1;
     
-    public Exp_SimpNumAST( Symbol e){
+    public Exp_SimpNumAST( String e){
         super();
         this.h1 = e;
     }

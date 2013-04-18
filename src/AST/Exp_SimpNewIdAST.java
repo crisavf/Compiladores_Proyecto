@@ -11,9 +11,10 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class Exp_SimpNewIdAST extends AExp_SimplAST{
-    public Symbol id;
+    //public Symbol id;
+    public String id;
     public AExpListAST h1;
-    public Exp_SimpNewIdAST(Symbol i, AExpListAST e){
+    public Exp_SimpNewIdAST(String i, AExpListAST e){
         super();
         this.id = i;
         this.h1 = e;

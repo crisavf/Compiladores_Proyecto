@@ -11,9 +11,11 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class VarDeclAST extends  AVarDeclAST {
-    public Symbol id1;
-    public Symbol id2;
-    public VarDeclAST(Symbol i1,Symbol i2){
+    //public Symbol id1;
+    //public Symbol id2;
+    public String id1;
+    public String id2;
+    public VarDeclAST(String i1,String i2){
         super();
         this.id1 = i1;
         this.id2 = i2;

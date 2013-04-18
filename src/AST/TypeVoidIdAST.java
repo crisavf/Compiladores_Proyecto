@@ -11,8 +11,9 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class TypeVoidIdAST extends ATypeVoidAST{
-    public Symbol id;
-    public TypeVoidIdAST(Symbol i){
+    //public Symbol id;
+    public String id;
+    public TypeVoidIdAST(String i){
         super();
         this.id = i;
     }

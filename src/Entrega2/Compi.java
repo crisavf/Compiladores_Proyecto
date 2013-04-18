@@ -473,6 +473,12 @@ public class Compi {
       Contador.setText("Fila: " + String.valueOf(currLine) + "       Columna: " + String.valueOf(pos - start));
    }
    
+   
+   
+   
+   
+   
+   
    private void Compilar(){
      Errores.setText("");
      int cantErrores=0;
@@ -490,10 +496,24 @@ public class Compi {
                 Scanner s=new Scanner(new java.io.FileReader(nombreFile));
                 parser p = new parser(s);
                  try {
+                     
                      p.parse();
+                     //p.debug_parse();
+                     
+                          System.out.println("Running...");
+        System.out.println("IMPRESION DEL ARBOL:");
+        System.out.println("");
+        PrettyPrintAST printer = new PrettyPrintAST();
+        printer.imprimir(p.raiz);
+        System.out.println("");
+        System.out.println("FIN DE IMPERSION");
+                    
+                          
                  } catch (Exception ex) {
+                     System.out.println("asdasd");
                      error=ex.getMessage();
-
+                     Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
+                    
                  }
                  
                  msjCompi+=s.datos;
@@ -527,8 +547,14 @@ public class Compi {
    }
    
    private void AST(){
-     System.out.println("Running...");
-   }   
+     System.out.println("Running...");/*
+        System.out.println("IMPRESION DEL ARBOL:");
+        System.out.println("");
+        PrettyPrintAST printer = new PrettyPrintAST();
+        printer.imprimir(p.raiz);
+        System.out.println("");
+        System.out.println("FIN DE IMPERSION");*/
+   }
    
    public static void main(String[] args){
         new Editor();

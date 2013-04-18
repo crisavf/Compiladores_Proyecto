@@ -11,8 +11,9 @@ import java_cup.runtime.Symbol;
  * @author Walter
  */
 public class Exp_SimpStringAST extends AExp_SimplAST{
-    public Symbol h1;
-    public Exp_SimpStringAST(Symbol e){
+    //public Symbol h1;
+    public String h1;
+    public Exp_SimpStringAST(String e){
         super();
         this.h1 = e;
         

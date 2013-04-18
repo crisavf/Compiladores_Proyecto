@@ -1,7 +1,6 @@
 
 
-import asd.*;
-class Fac extends Frame
+import asd.*;class Fac extends Frame
 {
   Button b1;
   Label l1;

@@ -11,8 +11,9 @@ import java_cup.runtime.Symbol;
  * @author Walter
  */
 public class ExpTypeReadAST extends AExpTypeAST{
-    public Symbol id;
-    public ExpTypeReadAST(Symbol i1){
+    //public Symbol id;
+    public String id;
+    public ExpTypeReadAST(String i1){
         super();
         this.id = i1;
     }

@@ -11,14 +11,15 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class StatAsigAST extends AStatementAST{
-    //public Symbol id;
-    public String id;
+    public Symbol id1;
+    //public String id;
     public AExpTypeAST h1;
-    public StatAsigAST(String i,AExpTypeAST ed){
+    public StatAsigAST(Symbol i,AExpTypeAST ed){
         super();
         this.h1 = ed;
-        this.id = i;
+        this.id1 = i;
     }
+
     public Object visit(Visitor v,Object arg) {
        return v.visitStatAsigAST(this, arg);
    }

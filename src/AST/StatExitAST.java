@@ -11,9 +11,9 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class StatExitAST extends AStatementAST {
-    //public Symbol numero;
-    public String numero;
-    public StatExitAST(String n){
+    public Symbol numero;
+    //public String numero;
+    public StatExitAST(Symbol n){
         super();
         this.numero = n;
     }

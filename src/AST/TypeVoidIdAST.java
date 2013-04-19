@@ -11,12 +11,13 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class TypeVoidIdAST extends ATypeVoidAST{
-    //public Symbol id;
-    public String id;
-    public TypeVoidIdAST(String i){
+    public Symbol id1;
+    //public String id;
+    public TypeVoidIdAST(Symbol i){
         super();
-        this.id = i;
+        this.id1 = i;
     }
+
     public Object visit(Visitor v,Object arg) {
        return v.visitTypeVoidIdAST(this, arg);
    }

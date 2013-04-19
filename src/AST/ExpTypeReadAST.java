@@ -11,11 +11,11 @@ import java_cup.runtime.Symbol;
  * @author Walter
  */
 public class ExpTypeReadAST extends AExpTypeAST{
-    //public Symbol id;
-    public String id;
-    public ExpTypeReadAST(String i1){
+    public Symbol id1;
+    //public String id;
+    public ExpTypeReadAST(Symbol i1){
         super();
-        this.id = i1;
+        this.id1 = i1;
     }
     
     public Object visit(Visitor v,Object arg) {

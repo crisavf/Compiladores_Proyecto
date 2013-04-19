@@ -13,22 +13,23 @@ import java_cup.runtime.Symbol;
 public class MethodDeclAST extends AMethodDeclAST{
 
     public ATypeVoidAST h1;
-    //public Symbol id;
-    public String id;
+    public Symbol id1;
+    //public String id;
     public AFormalListAST h2;
     public AVarVarDeclAST h3;
     public AVarStatementAST h4;
     public AReturnExpAST h5;
     
-    public MethodDeclAST(String i,ATypeVoidAST iv,AFormalListAST fl,AVarVarDeclAST vd,AVarStatementAST s, AReturnExpAST r){
+    public MethodDeclAST(Symbol i,ATypeVoidAST iv,AFormalListAST fl,AVarVarDeclAST vd,AVarStatementAST s, AReturnExpAST r){
         super();
         this.h1 = iv;
         this.h2 = fl;
         this.h3 = vd;
         this.h4 = s;
         this.h5 = r;
-        this.id = i;
+        this.id1 = i;
     }
+
     
     public Object visit(Visitor v,Object arg) {
        return v.visitMethodDeclAST(this, arg);

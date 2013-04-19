@@ -12,9 +12,9 @@ import java_cup.runtime.Symbol;
  */
 public class ClassDecl3AST extends AClassDecl3AST{
     public AClassDecl4AST h1;
-    //public Symbol id;
-    public String id1;
-    public ClassDecl3AST(String i,AClassDecl4AST cd3){
+    public Symbol id1;
+    //public String id1;
+    public ClassDecl3AST(Symbol i,AClassDecl4AST cd3){
         super();
         this.h1 = cd3;
         this.id1 = i;

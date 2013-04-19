@@ -7,7 +7,7 @@ parser code {:
 	Scanner scanner;
         
         
-        AAST raiz;
+        AAST raiz;   //Raiz para la creacion del arbol
 
 	public parser(java.io.Reader input){
 	scanner = new Scanner(input);
@@ -18,7 +18,7 @@ parser code {:
 
 
 
-public String errores(int sys)
+public String errores(int sys)   //Detecta si se encontro algun error y lo identifica por el symbolo
 	{
 		errorState=true;
 		if (sys == 2)
@@ -131,7 +131,7 @@ public String errores(int sys)
 			return("error");
 	}
 
-	public void syntax_error(Symbol cur_token2)
+	public void syntax_error(Symbol cur_token2)    //en error muestra lo que se espera que leyera
 	{
 		if (cur_token.sym == 2)
 			report_error("Se esperaba un Entero", cur_token2);
@@ -244,7 +244,7 @@ public String errores(int sys)
 
 	}
 
-	public void report_error(String message, Object info) {
+	public void report_error(String message, Object info) {   //Muestra elerror y la exception del un error de cup
 	   StringBuffer m = new StringBuffer("Error ");
 
 	   if (info instanceof java_cup.runtime.Symbol) {
@@ -264,10 +264,12 @@ public String errores(int sys)
 
 	public void report_fatal_error(String message, Object info) 	{
 		report_error(message, info);
-		throw new RuntimeException("Error Fatal de Sintaxis!!!");
+		throw new RuntimeException("Error Fatal de Sintaxis!!!"+info.value);
   	}
 
 :}
+
+/////////////    Lista de tokens terminales
 
 //terminal Integer NUM;
 terminal COMA,PUNTO, PUNTOyCOMA,PUNTOyASTERISCO,IMPORT,PUBLIC,STATIC,VOID,MAIN,EXTENDS,IMPLEMENTS, RETURN, SYSTEM,OUT,PRINTLN,CLASS,CICLO,CONDI,SINO,IN,READ,EXIT,LENGTH,TRUE,FALSE,THIS,NEW,SUMA,REST,DIV,MULT,ASIGN,OR,AND,NEG,COMPA,DIFE,MENOR,MENORIGUAL,MAYORIGUAL,MAYOR;
@@ -277,6 +279,9 @@ terminal TINT,TSTRING,TBOOL,PARENRedI,PARENRedD,PARENCuaD,PARENCuaI,PARENCurD,PA
 //terminal Symbol STRING,ID,NUM;
 terminal String STRING,ID,NUM;
 
+
+
+/////////////   Lista de tokens no terminales
 non terminal AProgramAST program;
 non terminal AVarImportDeclAST varimportdecl;
 non terminal AImportDeclAST importdecl;
@@ -315,6 +320,8 @@ non terminal AVarComaExpAST varcomaexp;
 non terminal AOpAST op;
 
 
+
+/////////////Precendence para evitar errores en el cup
 
 precedence left ID;
 precedence left OR, AND;
@@ -385,8 +392,8 @@ classdecl ::= classdecl2:cd1 PARENCurI bodydecl:bd PARENCurD
 // Regla 7)
 classdecl2::= CLASS ID:id1 classdecl3:cd2
 	{:
-                
-		RESULT= new ClassDecl2AST(id1,cd2);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new ClassDecl2AST(ident1,cd2);
 	:}
 	|
 	{:
@@ -397,7 +404,8 @@ classdecl2::= CLASS ID:id1 classdecl3:cd2
 // Regla 8)
 classdecl3::= classdecl4:cd3 ID:id1
 	{:
-		RESULT= new ClassDecl3AST(id1,cd3);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new ClassDecl3AST(ident1,cd3);
 	:}
 	;
 
@@ -417,14 +425,16 @@ classdecl4::= EXTENDS
 // Regla 10)
 typename ::=	ID:id1 typename2:tn
 	{:
-		RESULT= new TypeNameAST(id1,tn);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new TypeNameAST(ident1,tn);
 	:}
 	;
 
 // Regla 11)
 typename2 ::= typename2:tns PUNTO ID:id1
 	{:
-		RESULT= new TypeName2AST(id1,tns);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new TypeName2AST(ident1,tns);
 	:}
 	|
 	{:
@@ -435,7 +445,9 @@ typename2 ::= typename2:tns PUNTO ID:id1
 // Regla 12)
 mainclass ::=	CLASS ID:id1 PARENCurI PUBLIC STATIC VOID MAIN PARENRedI TSTRING ID:id2 PARENRedD PARENCurI statement:s PARENCurD PARENCurD
 	{:
-		RESULT= new MainClassAST(id1,id2,s);  //t,i2,s);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+                Symbol ident2 = new Symbol(sym.ID,id2left,id2right,id2);
+		RESULT= new MainClassAST(ident1,ident2,s);  //t,i2,s);
 	:}
 	;
 
@@ -446,6 +458,9 @@ bodydecl ::=	bodydecl2:bd1 bodydecl:bd
 		RESULT= new BodyDeclAST(bd1,bd);
 	:}
 	|
+	{:
+		RESULT= null;
+	:}
 	;
 
 // Regla 14)
@@ -471,14 +486,17 @@ bodydecl2 ::= vardecl:vd
 // Regla 15)
 vardecl ::= ID:id1 ID:id2 PUNTOyCOMA
 	{:
-		RESULT= new VarDeclAST(id1,id2);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+                Symbol ident2 = new Symbol(sym.ID,id2left,id2right,id2);
+		RESULT= new VarDeclAST(ident1,ident2);
 	:}
 	;
 
 // Regla 16)
 constrdecl ::=	PUBLIC ID:id1 PARENRedI formallist:fl PARENRedD PARENCurI varvardecl:vd varstatement:s PARENCurD
 	{:
-		RESULT= new ConstrDeclAST(id1,fl,vd,s);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new ConstrDeclAST(ident1,fl,vd,s);
 	:}
 	;
 
@@ -507,7 +525,8 @@ varstatement ::= varstatement:ss statement:s
 // Regla 19)
 methodecl ::=	PUBLIC typevoid:iv ID:id1 PARENRedI formallist:fl PARENRedD  PARENCurI varvardecl:vd varstatement:s returnexp:r PARENCurD
 	{:
-		RESULT= new MethodDeclAST(id1,iv,fl,vd,s,r);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new MethodDeclAST(ident1,iv,fl,vd,s,r);
 	:}
 	;
 
@@ -515,7 +534,8 @@ methodecl ::=	PUBLIC typevoid:iv ID:id1 PARENRedI formallist:fl PARENRedD  PAREN
 // Regla 20)                  --------FALTA-----
 typevoid::= ID:id1 
         {:
-		RESULT= new TypeVoidIdAST(id1);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new TypeVoidIdAST(ident1);
 	:}
         | VOID
 	{:
@@ -537,7 +557,9 @@ returnexp::= RETURN exp:e PUNTOyCOMA
 // Regla 22)
 formallist ::=	ID:id1 ID:id2 vartypeid:fls
 	{:
-		RESULT= new FormalListAST(id1,id2,fls);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+                Symbol ident2 = new Symbol(sym.ID,id2left,id2right,id2);
+		RESULT= new FormalListAST(ident1,ident2,fls);
 	:}
 	|
 	{:
@@ -548,8 +570,9 @@ formallist ::=	ID:id1 ID:id2 vartypeid:fls
 // Regla 23)
 vartypeid ::=	vartypeid:fls COMA ID:id1 ID:id2
 	{:
-
-		RESULT= new VarTypeIdAST(id1,id2,fls);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+                Symbol ident2 = new Symbol(sym.ID,id2left,id2right,id2);
+		RESULT= new VarTypeIdAST(ident1,ident2,fls);
 	:}
 	|
 	{:
@@ -568,19 +591,23 @@ type ::=  TINT PARENCuaI PARENCuaD
 // Regla 24)
 statement ::=	ID:id1 ASIGN  exptype:ed PUNTOyCOMA
 	{:      
-		RESULT= new StatAsigAST(id1,ed);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new StatAsigAST(ident1,ed);
 	:}
         |	thisid:t PUNTO ID:id1 PARENRedI explist:el PARENRedD PUNTOyCOMA
 	{:
-		RESULT= new StatExpListAST(id1,t,el);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new StatExpListAST(ident1,t,el);
 	:}
         |	ID:id1  cuadexpe:ce ASIGN  exptype:ed PUNTOyCOMA
 	{:
-		RESULT= new StatCuadExpAST(id1,ce,ed);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new StatCuadExpAST(ident1,ce,ed);
 	:}
         |       SYSTEM PUNTO EXIT PARENRedI NUM:n PARENRedD PUNTOyCOMA
 	{:
-		RESULT= new StatExitAST(n);
+                Symbol num = new Symbol(sym.NUM,nleft,nright,n);
+		RESULT= new StatExitAST(num);
 	:}
         |       PARENCurI varstatement:s PARENCurD
 	{:
@@ -624,7 +651,8 @@ exptype::= exp:e	{:
 	:}
 	| PARENRedI ID:id1 PARENRedD SYSTEM PUNTO IN PUNTO READ PARENRedI PARENRedD
 	{:
-		RESULT= new ExpTypeReadAST(id1);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new ExpTypeReadAST(ident1);
 	:}
 	;
 
@@ -635,7 +663,8 @@ thisid::= THIS
 	:}
 	| ID:id1
 	{:
-		RESULT= new ThisIdIdAST(id1);   ////////////////////////Estosssssssssssssssssssssssssssssssss
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new ThisIdIdAST(ident1);   ////////////////////////Estosssssssssssssssssssssssssssssssss
 	:}
 	;
 
@@ -660,7 +689,8 @@ vardistiexp ::= vardistiexp:e distiexp :t
 // Regla 31)
 distiexp ::= 	PUNTO ID:id1 PARENRedI explist:el PARENRedD
 	{:
-		RESULT= new DistiExpListAST(id1,el);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new DistiExpListAST(ident1,el);
 	:}
         |	op:o exp:e
 	{:
@@ -679,7 +709,8 @@ distiexp ::= 	PUNTO ID:id1 PARENRedI explist:el PARENRedD
 // Regla 32)
 exp_simpl ::=	 ID:id1
 	{:
-		RESULT= new Exp_SimpIdAST(id1);;
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new Exp_SimpIdAST(ident1);;
 	:}
 	| TRUE
 	{:
@@ -691,7 +722,8 @@ exp_simpl ::=	 ID:id1
 	:}
 	| NUM:n
 	{:
-		RESULT= new Exp_SimpNumAST(n);
+                Symbol num = new Symbol(sym.ID,nleft,nright,n);
+		RESULT= new Exp_SimpNumAST(num);
 	:}
 	| THIS
 	{:
@@ -703,7 +735,8 @@ exp_simpl ::=	 ID:id1
 	:}
 	| NEW ID:id1 PARENRedI explist:e PARENRedD
 	{:
-		RESULT= new Exp_SimpNewIdAST(id1,e);
+                Symbol ident1 = new Symbol(sym.ID,id1left,id1right,id1);
+		RESULT= new Exp_SimpNewIdAST(ident1,e);
 	:}
 	| NEG exp:e
 	{:
@@ -715,7 +748,8 @@ exp_simpl ::=	 ID:id1
 	:}
 	| STRING:s
 	{:
-		RESULT= new Exp_SimpStringAST(s);
+                Symbol stri = new Symbol(sym.STRING,sleft,sright,s);
+		RESULT= new Exp_SimpStringAST(stri);
 	:}
 	;
 

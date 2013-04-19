@@ -93,6 +93,4 @@ public interface Visitor
   
   public Object visitClassDecl4ImplementsAST(ClassDecl4ImplementsAST c, Object arg);
   public Object visitClassDecl4ExtendsAST(ClassDecl4ExtendsAST c, Object arg);
-
-  
 }

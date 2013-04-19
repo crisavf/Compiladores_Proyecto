@@ -1,6 +1,5 @@
-
-
-import asd.*;class Fac extends Frame
+import asd.*;
+class Fac extends Frame
 {
   Button b1;
   Label l1;
@@ -38,7 +37,7 @@ import asd.*;class Fac extends Frame
   public asd ComputeFac(asd num) 
   {
     asd num_aux;
-    if (num < 1)
+    if (numer < 1)
       num_aux = 1;
     else
       num_aux = num * (this.ComputeFac(num-1));

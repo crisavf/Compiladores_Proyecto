@@ -11,12 +11,13 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class ThisIdIdAST extends AThisIdAST{
-    //public Symbol id;
-    public String id;
-    public ThisIdIdAST(String s){
+    public Symbol id1;
+    //public String id;
+    public ThisIdIdAST(Symbol s){
         super();
-        this.id = s;
+        this.id1 = s;
     }
+
     public Object visit(Visitor v,Object arg) {
        return v.visitThisIdIdAST(this, arg);
    }

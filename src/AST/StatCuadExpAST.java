@@ -11,16 +11,18 @@ import java_cup.runtime.Symbol;
  * @author Battou
  */
 public class StatCuadExpAST extends AStatementAST {
-    //public Symbol id;
-    public String id;
+    public Symbol id1;
+    //public String id;
     public ACuadExpAST h1;
     public AExpTypeAST h2; 
-    public StatCuadExpAST(String i,ACuadExpAST ce,AExpTypeAST ed){
+    public StatCuadExpAST(Symbol i,ACuadExpAST ce,AExpTypeAST ed){
         super();
         this.h1 = ce;
         this.h2 = ed;
-        this.id = i;
+        this.id1 = i;
     }
+
+    
     public Object visit(Visitor v,Object arg) {
        return v.visitStatCuadExpAST(this, arg);
    } 

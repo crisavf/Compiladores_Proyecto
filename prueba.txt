@@ -7,7 +7,7 @@ import asd.*;class Fac extends Frame
   TextField t1;
     
   public Fac()
-  {
+{
     ClassActions Acciones;
 
     this.addWindowListener(new  Cierre()); 

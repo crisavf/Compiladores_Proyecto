@@ -32,6 +32,8 @@ public class Compi {
 {
  
      String error=null;
+     String arbol="";
+     Boolean Compi=false;
      
  //Menu
  JMenuBar MBarra=new JMenuBar();
@@ -40,6 +42,7 @@ public class Compi {
  JMenuItem MAbrir=new JMenuItem("Abrir");
  JMenuItem MSalir=new JMenuItem("Salir"); 
  JMenuItem MGuardar=new JMenuItem("Guardar");
+ JMenuItem MGuardarComo=new JMenuItem("Guardar Como...");
  JMenuItem MImprimir=new JMenuItem("Imprimir");;
  JMenu MEdicion=new JMenu("Edicion");
  JMenuItem MCortar=new JMenuItem("Cortar");
@@ -76,6 +79,7 @@ public class Compi {
  ImageIcon ICortar=new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Cut.png")).getImage());//".../Cut.png");//cortar.gif");
  ImageIcon IPegar=new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Paste.png")).getImage());//".../Paste.png");//pegar.gif");
  ImageIcon IGuardar=new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Save.png")).getImage());//".../Save.png");//guardar.gif");
+ ImageIcon IGuardarComo=new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Save.png")).getImage());//".../Save.png");//guardar.gif");
  ImageIcon IImprimir=new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Print.png")).getImage());//".../Print.png"); //impresora.gif");
  ImageIcon IBuscar=new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png")).getImage());//".../buscar.gif");
  ImageIcon ISalir=new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Exit.png")).getImage());//".../Exit.png");// salir.gif");
@@ -108,6 +112,9 @@ public class Compi {
   MArchivo.add(MGuardar);
   MGuardar.setIcon(IGuardar);
   MGuardar.addActionListener(this);
+  MArchivo.add(MGuardarComo);
+  MGuardarComo.setIcon(IGuardarComo);
+  MGuardarComo.addActionListener(this);
   MArchivo.add(MImprimir);
   MImprimir.setIcon(IImprimir);
   MImprimir.addActionListener(this);
@@ -247,7 +254,7 @@ public class Compi {
         
     if(ae.getSource()==MSalir) dispose();
     
-    if(ae.getSource()==MNuevo || ae.getSource()==BNuevo) Nuevo();//Texto.setText("");
+    if(ae.getSource()==MNuevo || ae.getSource()==BNuevo) Nuevo(); Compi=false;//Texto.setText("");
     
     if(ae.getSource()==MCopiar || ae.getSource()==PopCopiar || ae.getSource()==BCopiar) Texto.copy();
     
@@ -265,9 +272,15 @@ public class Compi {
     }
     if(ae.getSource()==BGuardar || ae.getSource()==MGuardar)
     {
-     VeriExten(2);
+       if(nombreFile.equals(""))
+           VeriExten(2);
+       else
+           Guardar(nombreFile);
     }
-    
+    if( ae.getSource()==MGuardarComo)
+    {
+           VeriExten(2);
+    }
     
     if(ae.getSource()==MBuscar)
     {
@@ -288,7 +301,11 @@ public class Compi {
     
     if((ae.getSource()==BAST) || (ae.getSource()==MAST))
     {
-     AST();
+           try {
+               AST();
+           } catch (Exception ex) {
+               Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
    }
   
@@ -306,7 +323,6 @@ public class Compi {
         VeriExten(2);
 
       nombreFile = "";
-//      ast = null;
       Texto.setText(""); Errores.setText("");
     }
   }
@@ -314,9 +330,6 @@ public class Compi {
   
   void VeriExten (int opt)
    {
-     //String Text="";
-    //try
-    //{
       JFileChooser fc=new JFileChooser(System.getProperty("user.dir"));
       FileNameExtensionFilter filter;
       filter = new FileNameExtensionFilter(".txt", "txt");
@@ -333,6 +346,7 @@ public class Compi {
           Abrir(fc.getSelectedFile());
           }
       }else{                                  //Verificando las extensiones para Guardarlo
+          
         opt = fc.showSaveDialog(null);
         if(opt== JFileChooser.APPROVE_OPTION){
           nombreFile = fc.getSelectedFile().toString();
@@ -342,37 +356,8 @@ public class Compi {
           }
           Guardar(nombreFile);
         }
-      }
-      //fc.showOpenDialog(null);
-      }
-      /*
-      File Abrir=fc.getSelectedFile(); //Devuelve el File que vamos a leerName
-      
-      if(Abrir!=null)
-      {
-        nombre=fc.getSelectedFile().getName();
-      }
-    
-      if(Abrir!=null)
-      {
-       Texto.setText(""); 
-       FileReader Fichero=new FileReader(Abrir);
-       BufferedReader leer=new BufferedReader(Fichero);
-       while((Text=leer.readLine())!=null)
-        {
-         Texto.append(Text+ "\n"); //append Concatena la linea leida
-        }
-        
-         leer.close();
-      }
-      
-     }
-     catch(IOException ioe)
-     {
-       System.out.println(ioe);
-     }
-   }*/
-  
+      }}
+   
   private void Abrir(File open){
     try{
       if(open != null){
@@ -408,27 +393,6 @@ public class Compi {
         write.close();
       }
     }catch(IOException e){System.out.println(e);}
-    
-    /*
-     String Text="";
-     try
-     {
-      JFileChooser fc=new JFileChooser(System.getProperty("user.dir"));
-      fc.showSaveDialog(this);
-      File Guardar =fc.getSelectedFile();
-      if(Guardar !=null)
-      {
-       nombre=fc.getSelectedFile().getName();
-       FileWriter  Guardx=new FileWriter(Guardar);
-       Guardx.write(Texto.getText());
-       Guardx.close();
-         }
-           
-      }
-       catch(IOException ioe)
-     {
-       System.out.println(ioe);
-     } */
    }
    
    private String Extencion(String file) {
@@ -479,12 +443,13 @@ public class Compi {
    
    
    
-   private void Compilar(){
+   public void Compilar(){
      Errores.setText("");
      int cantErrores=0;
      String msjCompi="";
      String msjErrores="";
-     
+     parser p=null;
+     PrettyPrintAST printer=null;
      
      if(!"".equals(Texto.getText())){
          
@@ -494,26 +459,19 @@ public class Compi {
              Guardar(nombreFile);
              try{
                 Scanner s=new Scanner(new java.io.FileReader(nombreFile));
-                parser p = new parser(s);
+                p = new parser(s);
+                
                  try {
-                     
                      p.parse();
-                     //p.debug_parse();
                      
-                          System.out.println("Running...");
-        System.out.println("IMPRESION DEL ARBOL:");
-        System.out.println("");
-        PrettyPrintAST printer = new PrettyPrintAST();
-        printer.imprimir(p.raiz);
-        System.out.println("");
-        System.out.println("FIN DE IMPERSION");
-                    
-                          
+                     //Esto deberia ir en el PrintAST
+                     printer = new PrettyPrintAST();
+                     printer.imprimir(p.raiz);
+                     
+                     
                  } catch (Exception ex) {
-                     System.out.println("asdasd");
                      error=ex.getMessage();
                      Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
-                    
                  }
                  
                  msjCompi+=s.datos;
@@ -539,21 +497,40 @@ public class Compi {
                     msjCompi+="\n ERROR DE COMPILACIÓN (CUP).";
                 
                 Errores.setText(msjCompi);
+
              }
               catch(IOException e){
               }
+             Errores.append("\n"+" IMPRESION DEL ARBOL: \n "+printer.GetInfoArbol()+"\n FIN DE IMPERSION");
          }
+     }else{
+         Errores.setForeground(Color.red);
+         Errores.setText("No se encontro código para Compilar");
      }
    }
    
-   private void AST(){
-     System.out.println("Running...");/*
-        System.out.println("IMPRESION DEL ARBOL:");
-        System.out.println("");
-        PrettyPrintAST printer = new PrettyPrintAST();
-        printer.imprimir(p.raiz);
-        System.out.println("");
-        System.out.println("FIN DE IMPERSION");*/
+   private void AST() throws Exception{
+       /*System.out.println(Compi);
+       if((!"".equals(nombreFile)) && (Compi==true)){
+       Scanner s = null;
+       parser p = null;
+         try {
+             
+             s = new Scanner(new java.io.FileReader(nombreFile));
+             p = new parser(s);
+             p.parse();
+             
+         } catch (FileNotFoundException ex) {
+             Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
+         }
+       
+         PrettyPrintAST printer = new PrettyPrintAST();
+         printer.imprimir(p.raiz);
+         Errores.append("\n"+" IMPRESION DEL ARBOL: \n "+printer.GetInfoArbol()+"\n FIN DE IMPERSION");
+     }else{
+         Errores.setForeground(Color.red);
+         Errores.setText("No existe Ningún arbol para Imprimir");
+     }*/
    }
    
    public static void main(String[] args){

@@ -12,12 +12,12 @@ import java_cup.runtime.Symbol;
  */
 public class ClassDecl2AST extends AClassDecl2AST{
     //public Symbol id;
-    public String id;
+    public String id1;
     public AClassDecl3AST h1;
     public ClassDecl2AST(String i,AClassDecl3AST cd2){
         super();
         this.h1 = cd2;
-        this.id = i;
+        this.id1 = i;
     }
         
     public Object visit(Visitor v,Object arg) {

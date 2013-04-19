@@ -652,9 +652,9 @@ public String errores(int sys)
 	}
 
 
-	public void report_fatal_error(String message, Object info) 	{
+	public void report_fatal_error(String message, Object info) throws ParseException 	{
 		report_error(message, info);
-		throw new RuntimeException("Error Fatal de Sintaxis!!!");
+		throw new ParseException("Error Fatal de Sintaxis!!!");
   	}
 
 

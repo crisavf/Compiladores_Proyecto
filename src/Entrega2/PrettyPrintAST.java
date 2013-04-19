@@ -5,7 +5,8 @@ import AST.*;
 //Implementa los m�todos para imprimir el AST utilizando Visitors
 public class PrettyPrintAST implements Visitor
 {
-   
+   String DatosImpresion="";
+    
   public void imprimir(AAST raiz)
   {
     raiz.visit(this,new Integer(0));
@@ -13,8 +14,11 @@ public class PrettyPrintAST implements Visitor
   
   public void printtab(int n)
   {
-    for(int num=n; num != 0; num--)
+    for(int num=n; num != 0; num--){
+        DatosImpresion+="+++";
       System.out.print("+++");
+    }
+    DatosImpresion+=">";
     System.out.print(">");
   }
   
@@ -24,6 +28,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitOpSumAST( OpSumAST c, Object arg){
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -31,6 +36,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitExp_SimpStringAST(Exp_SimpStringAST c, Object arg){
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -38,24 +44,28 @@ public class PrettyPrintAST implements Visitor
     public Object visitExp_SimpTrueAST(Exp_SimpTrueAST c, Object arg){
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
     public Object visitExp_SimpFalseAST(Exp_SimpFalseAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
     public Object visitExp_SimpNumAST(Exp_SimpNumAST c, Object arg){
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
     public Object visitExp_SimpThisAST(Exp_SimpThisAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -63,6 +73,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitExp_SimpIdAST(Exp_SimpIdAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -78,66 +89,77 @@ public class PrettyPrintAST implements Visitor
   public Object visitOpRestAST( OpRestAST c, Object arg){
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   }
   public Object visitOpMulAST( OpMulAST c, Object arg){
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   }
   public Object visitOpDivAST( OpDivAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   }  
   public Object visitOpDifeAST( OpDifeAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   }
   public Object visitOpCompaAST( OpCompaAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   } 
   public Object visitOpMenorAST( OpMenorAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   } 
   public Object visitOpMenorIgualAST( OpMenorIgualAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   } 
   public Object visitOpMayorIgualAST( OpMayorIgualAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   } 
   public Object visitOpOrAST( OpOrAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   }
   public Object visitOpAndAST( OpAndAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   } 
   public Object visitOpMayorAST(OpMayorAST c, Object arg){
       int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
   }
@@ -145,6 +167,7 @@ public class PrettyPrintAST implements Visitor
   public Object visitTypeVoidIdAST( TypeVoidIdAST c, Object arg){
           int numaux = ((Integer)arg).intValue();
     printtab(numaux);
+    DatosImpresion+=c.getClass().getName()+"\n";
     System.out.println(c.getClass().getName());
                     
     return null;
@@ -153,6 +176,7 @@ public class PrettyPrintAST implements Visitor
   public Object visitTypeVoidVoidAST( TypeVoidVoidAST c, Object arg){
           int numaux = ((Integer)arg).intValue();
     printtab(numaux);
+    DatosImpresion+=c.getClass().getName()+"\n";
     System.out.println(c.getClass().getName());
                     
     return null;
@@ -162,6 +186,7 @@ public class PrettyPrintAST implements Visitor
    public Object visitClassDecl4ExtendsAST( ClassDecl4ExtendsAST c, Object arg){
           int numaux = ((Integer)arg).intValue();
     printtab(numaux);
+    DatosImpresion+=c.getClass().getName()+"\n";
     System.out.println(c.getClass().getName());
                     
     return null;
@@ -170,6 +195,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitClassDecl4ImplementsAST( ClassDecl4ImplementsAST c, Object arg){
           int numaux = ((Integer)arg).intValue();
     printtab(numaux);
+    DatosImpresion+=c.getClass().getName()+"\n";
     System.out.println(c.getClass().getName());
                     
     return null;
@@ -178,14 +204,16 @@ public class PrettyPrintAST implements Visitor
     public Object visitClassDecl2AST(ClassDecl2AST c, Object arg) {
            int numaux = ((Integer)arg).intValue();
     printtab(numaux);
+    DatosImpresion+=c.getClass().getName()+"\n";
     System.out.println(c.getClass().getName());
     if(c.h1!=null)
       c.h1.visit(this,new Integer(numaux+1));
     else
     {
       printtab(numaux+1);
+      DatosImpresion+="NULL"+"\n";
       System.out.println("NULL");
-    }            
+    }
     return null;
     }
 
@@ -193,13 +221,15 @@ public class PrettyPrintAST implements Visitor
     public Object visitClassDeclBodyAST(ClassDeclBodyAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -207,6 +237,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -216,13 +247,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitClassDecl3AST(ClassDecl3AST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -232,13 +264,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitBodyDecl2ClassDeclAST(BodyDecl2ClassDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -248,13 +281,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitBodyDecl2ConstDeclAST(BodyDecl2ConstDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -264,13 +298,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitConstrDeclAST(ConstrDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -278,6 +313,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h3!=null)
@@ -285,6 +321,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -294,13 +331,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitExpAST(ExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -308,6 +346,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -316,13 +355,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitMainClassAST(MainClassAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -332,13 +372,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitMethodDeclAST(MethodDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -346,6 +387,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h3!=null)
@@ -353,6 +395,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h4!=null)
@@ -360,6 +403,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h5!=null)
@@ -367,6 +411,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -376,13 +421,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitReturnExpAST(ReturnExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -392,7 +438,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitExpTypeReadAST(ExpTypeReadAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -400,13 +446,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatCuadExpAST(StatCuadExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -414,6 +461,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -423,13 +471,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitExpListAST(ExpListAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -437,6 +486,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -446,13 +496,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatExpListAST(StatExpListAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -460,6 +511,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -469,13 +521,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitExp_SimpNegAST(Exp_SimpNegAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -485,13 +538,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitExp_SimpNewIntAST(Exp_SimpNewIntAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -501,13 +555,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitExp_SimpNewIdAST(Exp_SimpNewIdAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -517,13 +572,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitExp_SimpExpAST(Exp_SimpExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -533,13 +589,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitImpClssMnAST(ImpClssMnAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -547,6 +604,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h3!=null)
@@ -554,6 +612,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -563,13 +622,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitBodyDecl2MethoDeclAST(BodyDecl2MethoDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -579,13 +639,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitTypeName2AST(TypeName2AST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -595,7 +656,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarDeclAST(VarDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -604,13 +665,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitDistiExpCuadrAST(DistiExpCuadrAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -620,7 +682,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitDistiExpLengthAST(DistiExpLengthAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -629,13 +691,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitDistiExpListAST(DistiExpListAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
 
@@ -646,13 +709,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitDistiExpOpAST(DistiExpOpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -660,6 +724,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -669,13 +734,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitBodyDecl2VarDeclAST(BodyDecl2VarDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -685,13 +751,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatAsigAST(StatAsigAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -701,7 +768,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitImportDecl2AST(ImportDecl2AST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -710,13 +777,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitElseStatementAST(ElseStatementAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
 
@@ -727,7 +795,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatExitAST(StatExitAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -736,13 +804,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatIfElseAST(StatIfElseAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -750,6 +819,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h3!=null)
@@ -757,6 +827,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -766,13 +837,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitImportDeclAST(ImportDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -780,6 +852,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
 
@@ -790,13 +863,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatPrintlnAST(StatPrintlnAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -806,13 +880,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitExpTypeExpAST(ExpTypeExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -822,13 +897,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarDistiExpAST(VarDistiExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -836,6 +912,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -845,13 +922,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitCuadExpAST(CuadExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -861,13 +939,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitBodyDeclAST(BodyDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -875,6 +954,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -884,13 +964,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarClassDeclAST(VarClassDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -898,6 +979,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -907,13 +989,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarComaExpAST(VarComaExpAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -921,6 +1004,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -930,13 +1014,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitFormalListAST(FormalListAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -946,13 +1031,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarTypeIdAST(VarTypeIdAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -962,13 +1048,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarImportDeclAST(VarImportDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -976,6 +1063,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -985,13 +1073,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatVarStatAST(StatVarStatAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -1001,13 +1090,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarStatementAST(VarStatementAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -1015,6 +1105,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -1024,13 +1115,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitTypeNameAST(TypeNameAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -1040,13 +1132,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitVarVarDeclAST(VarVarDeclAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -1054,6 +1147,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         return null;
@@ -1063,13 +1157,14 @@ public class PrettyPrintAST implements Visitor
     public Object visitStatWhileAST(StatWhileAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         if (c.h1!=null)
           c.h1.visit(this,new Integer(numaux+1));
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
         if (c.h2!=null)
@@ -1077,6 +1172,7 @@ public class PrettyPrintAST implements Visitor
         else
         {
           printtab(numaux+1);
+          DatosImpresion+="NULL"+"\n";
           System.out.println("NULL");
         }
 
@@ -1087,7 +1183,7 @@ public class PrettyPrintAST implements Visitor
     public Object visitThisIdIdAST(ThisIdIdAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
-
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
         return null;
     }
@@ -1096,9 +1192,13 @@ public class PrettyPrintAST implements Visitor
     public Object visitThisIdThisAST(ThisIdThisAST c, Object arg) {
         int numaux = ((Integer)arg).intValue();
         printtab(numaux);
+        DatosImpresion+=c.getClass().getName()+"\n";
         System.out.println(c.getClass().getName());
 
         return null;
     }
-
+    
+    public String GetInfoArbol(){
+       return DatosImpresion;
+    }
 }

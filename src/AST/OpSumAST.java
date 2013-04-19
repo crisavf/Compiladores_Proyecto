@@ -13,6 +13,7 @@ public class OpSumAST extends AOpAST{
     public OpSumAST(){
         super();
     }
+    
     public Object visit(Visitor v,Object arg) {
        return v.visitOpSumAST(this, arg);
    }

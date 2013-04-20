@@ -6,7 +6,7 @@ package AST;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class VarDistiExpAST extends AVarDistiExpAST{
     public ADistiExpAST h1;

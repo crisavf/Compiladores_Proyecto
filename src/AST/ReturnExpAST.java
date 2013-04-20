@@ -8,7 +8,7 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class ReturnExpAST extends AReturnExpAST{
     public AExpAST h1;

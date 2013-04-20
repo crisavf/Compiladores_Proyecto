@@ -7,7 +7,7 @@ class Fac extends Frame
     
   public Fac()
 {
-    ClassActions Acciones;
+    ClassActions Acci_ones;
 
     this.addWindowListener(new  Cierre()); 
     this.setTitle("Ejemplo del uso de Interacciones de objetos");
@@ -50,7 +50,6 @@ class Fac extends Frame
     {
       Object objeto; 
 {objeto = evento.getSource(); }
-      
       if (objeto == b1) 
         { this.b1_ActionPerformed(evento); }
     }

@@ -6,7 +6,7 @@ package AST;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class VarClassDeclAST extends AVarClassDeclAST {
     public AClassDeclAST h1;

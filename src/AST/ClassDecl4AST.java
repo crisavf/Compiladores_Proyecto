@@ -10,14 +10,13 @@ import java_cup.runtime.Symbol;
  *
  * @author Walter
  */
-public class StatPrintlnAST extends AStatementAST {
-    public AExpAST h1;
-    public StatPrintlnAST(AExpAST e){
+public class ClassDecl4AST extends AClassDecl4AST{
+    public Symbol v_toks;
+    public ClassDecl4AST(Symbol e){
         super();
-        this.h1= e;
+        this.v_toks =e;
     }
-    
     public Object visit(Visitor v,Object arg) {
-       return v.visitStatPrintlnAST(this, arg);
+       return v.visitconExtendsoImplementsAST(this, arg);
    }
 }

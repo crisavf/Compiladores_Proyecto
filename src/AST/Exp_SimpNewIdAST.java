@@ -8,7 +8,7 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class Exp_SimpNewIdAST extends AExp_SimplAST{
     public Symbol id1;

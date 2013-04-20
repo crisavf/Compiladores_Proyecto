@@ -6,7 +6,7 @@ package AST;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class StatVarStatAST extends AStatementAST{
     public AVarStatementAST h1;

@@ -8,7 +8,7 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class ImportDecl2AST extends AImportDecl2AST {
     //public Symbol pa;

@@ -8,7 +8,7 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class TypeName2AST extends ATypeName2AST{
     public ATypeName2AST h1;

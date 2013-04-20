@@ -6,7 +6,7 @@ package AST;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class VarImportDeclAST extends AVarImportDeclAST {
     public AImportDeclAST h1;

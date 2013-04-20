@@ -6,7 +6,7 @@ package AST;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class ImpClssMnAST extends AProgramAST  {
     public AVarImportDeclAST h1;

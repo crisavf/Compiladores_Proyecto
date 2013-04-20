@@ -8,16 +8,15 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Walter
+ * @author Battou
  */
-public class StatPrintlnAST extends AStatementAST {
-    public AExpAST h1;
-    public StatPrintlnAST(AExpAST e){
+public class TypeVoidAST extends ATypeVoidAST{
+    public Symbol v_toks;
+    public TypeVoidAST(Symbol i){
         super();
-        this.h1= e;
+        this.v_toks = i;
     }
-    
     public Object visit(Visitor v,Object arg) {
-       return v.visitStatPrintlnAST(this, arg);
+       return v.visitconIdoVoidAST(this, arg);
    }
 }

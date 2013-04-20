@@ -8,7 +8,7 @@ import java_cup.runtime.Symbol;
 
 /**
  *
- * @author Battou
+ * @author Walter
  */
 public class StatExpListAST extends AStatementAST{
     public AThisIdAST h1; 
